@@ -95,6 +95,7 @@ $app->middleware([
 
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(Fruitcake\Cors\CorsServiceProvider::class);
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
