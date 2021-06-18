@@ -11,6 +11,7 @@ class Movie extends Model
         'name',
         'overview',
         'release_date',
+        'popularity',
     ];
 
     public function genres()

@@ -50,6 +50,7 @@ class MovieSeeder extends Seeder
                         'poster' => $movie['poster_path'],
                         'name' => $movie['title'],
                         'overview' => $movie['overview'],
+                        'popularity' => $movie['popularity'] ?? null,
                         'release_date' => isset($movie['release_date']) ? (Carbon::parse($movie['release_date']) ??  null) : null,
                     ]);
 
