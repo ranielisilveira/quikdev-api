@@ -16,3 +16,10 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/movies/trending', 'MovieController@trending');
+$router->get('/movies/genres', 'MovieController@genres');
+
+$router->get('/movies/{id}', 'MovieController@show');
+
+$router->post('/movies/search', 'MovieController@search');

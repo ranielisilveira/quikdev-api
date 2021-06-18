@@ -47,6 +47,7 @@ class MovieSeeder extends Seeder
                     $output->writeln("<info>" . $movie['title'] . " - saved!</info>");
 
                     $dbMovie = Movie::create([
+                        'id' => $movie['id'],
                         'poster' => $movie['poster_path'],
                         'name' => $movie['title'],
                         'overview' => $movie['overview'],
