@@ -1,0 +1,26 @@
+version: "3.4"
+
+services:
+  web:
+    image: ambientum/php:7.4-nginx
+    container_name: quickdev-web
+    volumes:
+      - .:/var/www/app:delegated
+    ports:
+      - 8001:8080
+    depends_on:
+      - db
+    environment:
+      - PHP_MEMORY_LIMIT=-1
+      - COMPOSER_MEMORY_LIMIT=-1
+  db:
+    container_name: mysql-quikdev
+    image: mysql:5.7
+    ports:
+      - "5801:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: quikdev_api
+volumes:
+  quickdev-data:
+    driver: local
