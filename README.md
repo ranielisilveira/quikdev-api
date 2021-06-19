@@ -1,24 +1,25 @@
-# Lumen PHP Framework
+# Desafio Full Stack Quikdev
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+## Instruções
+Conforme solicitado foi utilizada a plataforma PHP (Lumen 8.* + MySql).
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+O primeiro passo para rodar a api é, após clonar este repositório, copiar o arquivo `.env.example` e salve como `.env`.
 
-## Official Documentation
+Devem ser adicionadas/modificadas as seguintes informações:
+- "TMDB_APIKEY", que é a chave utilizada para autenticação na api tmdb
+- "TMDB_ENDPOINT", inicialmente pode ser utilizado o valor: 'https://api.themoviedb.org'
+- "TMDB_IMAGES", que é o endpoint de imagens, inicialmente pode ser utilizado o valor:  'https://image.tmdb.org/t/p/'
+- "DB_HOST"=db (container mysql dentro do docker)
+- "DB_PORT"=3306 (porta padrão dentro do docker)
+- "DB_DATABASE"=quikdev_api (nome do banco de dados inicial)
+- "DB_USERNAME"=root
+- "DB_PASSWORD"=root
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+Para verificar se a sua solução está funcionando, utilize o comando `docker-compose up --build` a partir do diretório raiz do projeto. 
+A API estará mapeada para a porta `8001` do seu host local. Uma requisição `GET localhost:8001/` vai retornar a versão do Lumen em execução.
 
-## Contributing
+**IMPORTANTE:** após a execução do `docker-compose up -d`, na pasta do projeto, execute o comando `docker-compose run web composer install` e em seguida `docker-compose run web php artisan key:generate`.
+Quando o volume atual é mapeado para dentro do container, ele sobrescreve a pasta com as dependências instaladas pelo composer, por isso o comando é necessário. 
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**DEVE SER EXECUTADO O COMANDO MIGRAÇÃO** antes de testar o funcionamento da aplicação, para isso execute o comando `docker-compose run web php artisan migrate --seed`. Após a execução serão criadas as tabelas e dados básicos dos filmes.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
